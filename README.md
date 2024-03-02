@@ -5,7 +5,7 @@ A new Flutter project.
 ## Getting Started
 
 ```
-git clone https://github.com/username/repository.git
+git clone https://github.com/jay-isampelliwar/paypie
 cd Paypie
 flutter pub get
 flutter run
