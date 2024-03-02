@@ -4,6 +4,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:paypie/features/auth/view/auth_phone_otp.dart';
 
+import '../../../constants/degine_constants.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -17,6 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          title: const Text(
+            "Home Page",
+            style: TextStyle(
+              fontSize: LARGE_FONT_SIZE,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
           backgroundColor: Theme.of(context).primaryColor,
           actions: [
             TextButton(

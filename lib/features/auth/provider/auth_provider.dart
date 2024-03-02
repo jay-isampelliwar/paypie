@@ -50,12 +50,15 @@ class AuthProvider with ChangeNotifier {
         verificationCompleted: (PhoneAuthCredential credential) async {},
         verificationFailed: (FirebaseAuthException e) async {
           log(e.toString());
+          message(e.code, context);
           setSendOtpLoading(false);
         },
         codeSent: (String verificationId, int? resendToken) async {
           setSendOtpLoading(false);
           notifyListeners();
           this.verificationId = verificationId;
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text("OTP Sent")));
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -81,11 +84,15 @@ class AuthProvider with ChangeNotifier {
       bool userExists = await isUserExists(_auth.currentUser!.phoneNumber!);
 
       if (userExists) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text("Welcome again")));
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (_) => const HomeScreen()),
             (route) => false);
       } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text("Welcome")));
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (_) => const RegistrationScreen()),
@@ -94,6 +101,7 @@ class AuthProvider with ChangeNotifier {
     } on FirebaseException catch (e) {
       setVerifyOtpLoading(false);
       log(e.toString());
+      message(e.code, context);
     }
   }
 
@@ -107,7 +115,7 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> registration(String firstName, String lastName, String email,
-      XFile profileImage) async {
+      XFile profileImage, context) async {
     try {
       setRegisterLoading(true);
       String downloadUrl = await getLink(File(profileImage.path));
@@ -121,9 +129,11 @@ class AuthProvider with ChangeNotifier {
 
       await _firestore.collection("Users").add(userData);
       setRegisterLoading(false);
+      message("Congratulations your account has been created", context);
       return true;
     } on FirebaseException catch (e) {
       log(e.code.toString());
+      message(e.code, context);
       setRegisterLoading(false);
       return false;
     } catch (e) {
@@ -152,5 +162,10 @@ class AuthProvider with ChangeNotifier {
       log(e.toString());
       return "";
     }
+  }
+
+  void message(String message, context) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 }

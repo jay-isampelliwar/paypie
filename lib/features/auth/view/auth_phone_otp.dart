@@ -57,9 +57,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
                             FilteringTextInputFormatter.digitsOnly,
                             LengthLimitingTextInputFormatter(10),
                           ],
-                          decoration: const InputDecoration(
-                            hintText: "Mobile number",
-                          ),
+                          decoration:
+                              const InputDecoration(hintText: "Mobile number"),
                         ),
                       ),
                       const SizedBox(height: VERY_LARGE_SPACE),

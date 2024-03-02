@@ -130,8 +130,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           String lastName = lastNameController.text.trim();
                           String email = emailController.text.trim();
 
-                          bool status = await provider.registration(
-                              firstName, lastName, email, profilePicture!);
+                          bool status = await provider.registration(firstName,
+                              lastName, email, profilePicture!, context);
 
                           if (status && mounted) {
                             profilePicture = null;
