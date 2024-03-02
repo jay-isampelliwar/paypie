@@ -20,8 +20,7 @@ class PhoneLogin extends StatefulWidget {
 
 class _PhoneLoginState extends State<PhoneLogin> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController phoneController =
-      TextEditingController(text: "7030356059");
+  TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
