@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109476249713",
+    "project_id": "paypie-ec638",
+    "storage_bucket": "paypie-ec638.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109476249713:android:7afdfcd4697195e7721bd0",
+        "android_client_info": {
+          "package_name": "com.example.paypie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7NTRQ9X7zNCrtjqNymcvXrw08ir6T01Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
